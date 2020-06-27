@@ -23,7 +23,7 @@ import {
 } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
-class Login extends React.Component {
+class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,20 +33,18 @@ class Login extends React.Component {
 
   login = (e) => {
     e.preventDefault();
-    if (this.state.email == '' || this.state.email == undefined) {
-      NotificationManager.error('Email is required', 'Error!');
+    if (this.state.number == '' || this.state.number == undefined) {
+      NotificationManager.error('Number is required', 'Error!');
       return false;
     } else if (this.state.password == '' || this.state.password == undefined) {
       NotificationManager.error('Password is required', 'Error!');
       return false;
     }
-    localStorage.setItem('token', 'a2wqswq2wsed');
-    this.setState({ success: true });
   };
 
   render() {
     if (this.state.success) {
-      return <Redirect to="home/index" />;
+      return <Redirect to="dashboard/index" />;
     }
     return (
       <>
@@ -54,7 +52,7 @@ class Login extends React.Component {
           <div className="login">
             <Card className="shadow border-0">
               <CardBody className="px-lg-5 py-lg-5">
-                <h3 className="text-center">Login</h3>
+                <h3 className="text-center">Register</h3>
                 <Form onSubmit={this.login}>
                   <FormGroup>
                     <InputGroup className="input-group-alternative mb-3">
@@ -65,7 +63,7 @@ class Login extends React.Component {
                         placeholder="Email"
                         type="text"
                         onChange={(event) =>
-                          this.setState({ email: event.target.value })
+                          this.setState({ number: event.target.value })
                         }
                       />
                     </InputGroup>
@@ -84,20 +82,33 @@ class Login extends React.Component {
                       />
                     </InputGroup>
                   </FormGroup>
-                  <FormGroup check>
-                    <Label check>
-                      <Input type="checkbox" /> Remember me
-                    </Label>
+                  <FormGroup>
+                    <InputGroup className="input-group-alternative mb-3">
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText></InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        placeholder="Confirm Password"
+                        type="password"
+                        onChange={(event) =>
+                          this.setState({ password: event.target.value })
+                        }
+                      />
+                    </InputGroup>
                   </FormGroup>
 
                   <div className="text-center ">
-                    <Button className="mt-4" color="secondary" type="submit">
-                      Login
+                    <Button
+                      className="mt-4"
+                      color="secondary"
+                      type="submit"
+                      disabled={!this.state.number || !this.state.password}
+                    >
+                      Sign up
                     </Button>
                   </div>
                   <div className="mt-4">
-                    Don't have an Account ?
-                    <Link to="register">Register here</Link>
+                    Already have an Account ? <Link to="/">Login here</Link>
                   </div>
                 </Form>
               </CardBody>
@@ -110,4 +121,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Register;

@@ -4,7 +4,8 @@
   align-items: center;
   height: 100vh;
 }
-.login {
+.login,
+.info {
   max-width: 500px;
   width: 100%;
 }
