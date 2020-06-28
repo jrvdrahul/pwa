@@ -1,3 +1,4 @@
+/* login and register block */
 .perfect-center {
   display: flex;
   justify-content: center;
@@ -8,8 +9,27 @@
 .info {
   max-width: 500px;
   width: 100%;
+  padding: 10px;
 }
+/* header */
 .header {
   background: #ab3db1;
   padding: 10px;
+}
+/* button */
+.goTo {
+  background: green;
+  padding: 12px;
+  color: white;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+/* details */
+.details div {
+  padding: 20px;
+  border: 1px solid darkgrey;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }

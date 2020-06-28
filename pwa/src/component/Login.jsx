@@ -14,8 +14,6 @@ import {
   InputGroupText,
   InputGroup,
   Label,
-  Row,
-  Col,
 } from 'reactstrap';
 import {
   NotificationContainer,
@@ -31,12 +29,16 @@ class Login extends React.Component {
     };
   }
 
+  // login event
   login = (e) => {
     e.preventDefault();
-    if (this.state.email == '' || this.state.email == undefined) {
+    if (this.state.email === '' || this.state.email === undefined) {
       NotificationManager.error('Email is required', 'Error!');
       return false;
-    } else if (this.state.password == '' || this.state.password == undefined) {
+    } else if (
+      this.state.password === '' ||
+      this.state.password === undefined
+    ) {
       NotificationManager.error('Password is required', 'Error!');
       return false;
     }
@@ -55,15 +57,18 @@ class Login extends React.Component {
             <Card className="shadow border-0">
               <CardBody className="px-lg-5 py-lg-5">
                 <h3 className="text-center">Login</h3>
+                {/* Login Form */}
                 <Form onSubmit={this.login}>
                   <FormGroup>
                     <InputGroup className="input-group-alternative mb-3">
                       <InputGroupAddon addonType="prepend">
-                        <InputGroupText></InputGroupText>
+                        <InputGroupText>
+                          <i className="far fa-envelope"></i>
+                        </InputGroupText>
                       </InputGroupAddon>
                       <Input
                         placeholder="Email"
-                        type="text"
+                        type="email"
                         onChange={(event) =>
                           this.setState({ email: event.target.value })
                         }
@@ -73,7 +78,9 @@ class Login extends React.Component {
                   <FormGroup>
                     <InputGroup className="input-group-alternative mb-3">
                       <InputGroupAddon addonType="prepend">
-                        <InputGroupText></InputGroupText>
+                        <InputGroupText>
+                          <i className="fas fa-asterisk"></i>
+                        </InputGroupText>
                       </InputGroupAddon>
                       <Input
                         placeholder="Password"

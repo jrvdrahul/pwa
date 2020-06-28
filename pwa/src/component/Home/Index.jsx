@@ -15,9 +15,9 @@ class Home extends React.Component {
   render() {
     console.log(this.state.token == null);
     if (
-      this.state.token == '' ||
-      this.state.token == null ||
-      this.state.token == 'undefined'
+      this.state.token === '' ||
+      this.state.token === null ||
+      this.state.token === 'undefined'
     ) {
       return <Redirect to="/" />;
     }
